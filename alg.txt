@@ -1,3 +1,5 @@
+Pseudo code for alg
+
 function minimax(node, depth, maximizingPlayer) is
     if depth = 0 or node is a terminal node then
         return the heuristic value of node
