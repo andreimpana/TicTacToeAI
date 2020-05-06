@@ -22,6 +22,7 @@ def bestMove(inputBoard):
 
 
 def minimax(inputBoard, depth, isMaximize):
+    result = inputBoard.checkWin()
     # if(isMaximize):
 
     return 1

@@ -25,10 +25,8 @@ while game_board.checkWin() == None and moves != 9:
     countinue = False
     print(game_board)
 
-if game_board.checkWin() == None and moves == 9:
-    print(game_board.checkWin())
-else:
-    print(game_board.checkWin() + " Wins!")
+print(game_board.checkWin() + " Wins!")
 
 # 514628379
 # 1 3 7 6 9 not returning true winner
+# check if winner is tie
