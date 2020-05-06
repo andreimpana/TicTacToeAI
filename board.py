@@ -1,5 +1,17 @@
 import numpy as np
 
+cordsDictionary = {
+    1: "0,0",
+    2: "0,1",
+    3: "0,2",
+    4: "1,0",
+    5: "1,1",
+    6: "1,2",
+    7: "2,0",
+    8: "2,1",
+    9: "2,2"
+}
+
 
 class Board:
     def __init__(self):
@@ -8,11 +20,13 @@ class Board:
         self.win_state = False
 
         # test
-        init = 0
+        init = 1
         for x in range(0, 3):
             for y in range(0, 3):
                 self.board[x, y] = init
                 init += 1
+        print(self)
+        self.board[:] = " "
 
     def __str__(self):
         string = ""
@@ -25,22 +39,40 @@ class Board:
     def checkWin(self):
         # Check right Diag
         if (self.board[0, 0] == self.board[1, 1] == self.board[2, 2]) and (self.board[0, 0] == "X" or self.board[0, 0] == "O"):
-            print("Diag")
+            # print("Diag")
             return True
         # Check left Diag
         elif (self.board[2, 0] == self.board[1, 1] == self.board[0, 2]) and (self.board[2, 0] == "X" or self.board[0, 0] == "O"):
-            print("Diag")
+            # print("Diag")
             return True
         else:
             for x in range(0, 3):
                 # check Rows
                 if (self.board[x, 0] == self.board[x, 1] == self.board[x, 2]) and (self.board[x, 0] == "X" or self.board[x, 0] == "O"):
-                    print("Row")
+                    # print("Row")
                     return True
                 # Check Cols
                 elif (self.board[0, x] == self.board[1, x] == self.board[2, x]) and (self.board[0, x] == "X" or self.board[0, x] == "O"):
-                    print("Cols")
+                    # print("Cols")
                     return True
                 # Tie
                 else:
                     return "No Winner"
+
+    def insert(self, location, player):
+        cordX, cordY = self.getCords(location)
+        if self.checkIfEmpty(location) == False:
+            print("Spot taken, try again")
+            return False
+        else:
+            self.board[cordX, cordY] = player
+            return True
+
+    def getCords(self, x):
+        cords = cordsDictionary[x]
+        cords.split(",")
+        return int(cords[0]), int(cords[2])
+
+    def checkIfEmpty(self, x):
+        cordX, cordY = self.getCords(x)
+        return self.board[cordX, cordY] == " "
