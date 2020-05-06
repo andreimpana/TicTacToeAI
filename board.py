@@ -38,26 +38,39 @@ class Board:
 
     def checkWin(self):
         # Check right Diag
+        winner = None
         if (self.board[0, 0] == self.board[1, 1] == self.board[2, 2]) and (self.board[0, 0] == "X" or self.board[0, 0] == "O"):
             # print("Diag")
-            return True
+            if(self.board[0, 0] == "X"):
+                winner = "X"
+            else:
+                winner = "O"
         # Check left Diag
         elif (self.board[2, 0] == self.board[1, 1] == self.board[0, 2]) and (self.board[2, 0] == "X" or self.board[0, 0] == "O"):
             # print("Diag")
-            return True
+            if(self.board[2, 0] == "X"):
+                winner = "X"
+            else:
+                winner = "O"
         else:
             for x in range(0, 3):
                 # check Rows
                 if (self.board[x, 0] == self.board[x, 1] == self.board[x, 2]) and (self.board[x, 0] == "X" or self.board[x, 0] == "O"):
                     # print("Row")
-                    return True
+                    if(self.board[x, 0] == "X"):
+                        winner = "X"
+                    else:
+                        winner = "O"
                 # Check Cols
                 elif (self.board[0, x] == self.board[1, x] == self.board[2, x]) and (self.board[0, x] == "X" or self.board[0, x] == "O"):
                     # print("Cols")
-                    return True
+                    if(self.board[0, x] == "X"):
+                        winner = "X"
+                    else:
+                        winner = "O"
                 # Tie
-                else:
-                    return "No Winner"
+
+        return winner
 
     def insert(self, location, player):
         cordX, cordY = self.getCords(location)
