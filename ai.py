@@ -1,6 +1,6 @@
 scoreVals = {
-    "X": 1,
-    "O": -1,
+    "X": -1,
+    "O": 1,
     "tie": 0
 }
 
@@ -12,7 +12,7 @@ def bestMove(inputBoard):
             cordX, cordY = inputBoard.getCords(x)
 
             inputBoard.board[cordX, cordY] = "O"
-            score = minimax(inputBoard, 0, True)
+            score = minimax(inputBoard, 0, False)
             inputBoard.board[cordX, cordY] = " "
 
             if score > bestScore:
@@ -23,6 +23,28 @@ def bestMove(inputBoard):
 
 def minimax(inputBoard, depth, isMaximize):
     result = inputBoard.checkWin()
-    # if(isMaximize):
+    if(result != None):
+        return scoreVals[result]
 
-    return 1
+    if(isMaximize):
+        bestScore = float("-inf")
+
+        for x in range(1, 10):
+            if inputBoard.checkIfEmpty(x) == True:
+                cordX, cordY = inputBoard.getCords(x)
+                inputBoard.board[cordX, cordY] = "O"
+                score = minimax(inputBoard, depth+1, False)
+                inputBoard.board[cordX, cordY] = " "
+                bestScore = max(score, bestScore)
+        return bestScore
+    else:
+        bestScore = float("inf")
+
+        for x in range(1, 10):
+            if inputBoard.checkIfEmpty(x) == True:
+                cordX, cordY = inputBoard.getCords(x)
+                inputBoard.board[cordX, cordY] = "X"
+                score = minimax(inputBoard, depth+1, True)
+                inputBoard.board[cordX, cordY] = " "
+                bestScore = min(score, bestScore)
+        return bestScore

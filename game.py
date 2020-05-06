@@ -26,7 +26,3 @@ while game_board.checkWin() == None and moves != 9:
     print(game_board)
 
 print(game_board.checkWin() + " Wins!")
-
-# 514628379
-# 1 3 7 6 9 not returning true winner
-# check if winner is tie
