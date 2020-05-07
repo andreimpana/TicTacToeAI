@@ -10,13 +10,16 @@ player_turn = True
 
 while game_board.checkWin() == None and moves != 9:
     if player_turn:
-        # player turn
+        # X always go first, player is always X
         while countinue == False:
             countinue = game_board.insert(int(input("Location: ")), "X")
     else:
-        # Ai turn
         while countinue == False:
-            #countinue = game_board.insert(int(input("Location: ")), "O")
+
+            # UNCOMMENT IF TWOPLAYERS
+            # countinue = game_board.insert(int(input("Location: ")), "O")
+
+            # UNCOMMENT IF AI
             bestMove(game_board)
             countinue = True
 

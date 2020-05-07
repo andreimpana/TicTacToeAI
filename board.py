@@ -50,7 +50,7 @@ class Board:
             else:
                 winner = "O"
         # Check left Diag
-        elif (self.board[2, 0] == self.board[1, 1] == self.board[0, 2]) and (self.board[2, 0] == "X" or self.board[0, 0] == "O"):
+        elif (self.board[2, 0] == self.board[1, 1] == self.board[0, 2]) and (self.board[2, 0] == "X" or self.board[2, 0] == "O"):
             if(self.board[2, 0] == "X"):
                 winner = "X"
             else:

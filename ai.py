@@ -1,3 +1,4 @@
+# Values for outcomes
 scoreVals = {
     "X": -1,
     "O": 1,
@@ -5,6 +6,7 @@ scoreVals = {
 }
 
 
+# Finds the best move and plays such move
 def bestMove(inputBoard):
     bestScore = float("-inf")
     for x in range(1, 10):
@@ -21,14 +23,17 @@ def bestMove(inputBoard):
     inputBoard.board[bestMove[0], bestMove[1]] = "O"
 
 
+# Algo to find the best move
 def minimax(inputBoard, depth, isMaximize):
     result = inputBoard.checkWin()
+
     if(result != None):
         return scoreVals[result]
-
+    # Maxamize the AI
     if(isMaximize):
         bestScore = float("-inf")
 
+        # Going through all possible moves
         for x in range(1, 10):
             if inputBoard.checkIfEmpty(x) == True:
                 cordX, cordY = inputBoard.getCords(x)
@@ -38,8 +43,10 @@ def minimax(inputBoard, depth, isMaximize):
                 bestScore = max(score, bestScore)
         return bestScore
     else:
+        # Minimize player
         bestScore = float("inf")
 
+        # Going through all possible moves
         for x in range(1, 10):
             if inputBoard.checkIfEmpty(x) == True:
                 cordX, cordY = inputBoard.getCords(x)
