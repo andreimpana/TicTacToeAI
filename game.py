@@ -1,5 +1,5 @@
 from board import Board
-from ai import *
+from ai import bestMove
 
 game_board = Board()
 
