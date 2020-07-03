@@ -4,7 +4,10 @@ This is a TicTacToeAI that implements the Minimax algorithum to maximize its pot
 
 ## Installation
 
-Download and unpack the zip and run game.py. 
+Download and unpack the zip and run game.py.
+```
+python3 game.py
+```
 
 ## Usage
 
